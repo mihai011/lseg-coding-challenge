@@ -77,15 +77,16 @@ def resolve(file_name, part_2=False):
             ins["pos1"][1],
             ins["pos2"][1],
         )
-        work_area = grid[pos10:pos20, pos11:pos21]
-        grid[pos10:pos20, pos11:pos21] = action_functions[ins["action"]](work_area)
+        array_slice = np.s_[pos10:pos20, pos11:pos21]
+        work_area = grid[array_slice]
+        grid[array_slice] = action_functions[ins["action"]](work_area)
 
     return np.sum(grid)
 
 
 def test_read():
-    """_summary_"""
-    
+    """test read function"""
+
     instructions = read_input("test_input.txt")
     expected_instruction = [
         {"action": TURN_ON, "pos1": (0, 0), "pos2": (999, 999)},
@@ -96,8 +97,8 @@ def test_read():
     assert instructions == expected_instruction
 
 
-def test_integration():
-    """_summary_"""
+def test_resolve():
+    """test resolve functions"""
 
     res_1 = resolve("test_input.txt")
     assert res_1 == 998004
