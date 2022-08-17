@@ -6,7 +6,7 @@ Resolving LSEG coding challenge.
 import numpy as np
 from tqdm import tqdm
 
-from utils import increase, init, zeros, ones, toogle, increase, decrease
+from utils import init, zeros, ones, toogle, increase, decrease
 
 
 TURN_ON = "turn on"
@@ -35,8 +35,10 @@ def read_input(file):
 
             instruction = {}
             words = line.split(" ")
-            pos_2 = eval(words[-1])
-            pos_1 = eval(words[-3])
+            pair_2 = words[-1].split(",")
+            pair_1 = words[-3].split(",")
+            pos_2 = int(pair_2[0]), int(pair_2[1])
+            pos_1 = int(pair_1[0]), int(pair_1[1])
 
             instruction["pos1"] = pos_1
             instruction["pos2"] = pos_2
@@ -100,10 +102,10 @@ def test_read():
 def test_resolve():
     """test resolve functions"""
 
-    res_1 = resolve("test_input.txt")
-    assert res_1 == 998004
-    res_2 = resolve("test_input.txt", True)
-    assert res_2 == 1003996
+    result_1 = resolve("test_input.txt")
+    assert result_1 == 998004
+    result_2 = resolve("test_input.txt", True)
+    assert result_2 == 1003996
 
 
 if __name__ == "__main__":
