@@ -5,8 +5,6 @@ Utils module function
 import numpy as np
 
 
-
-
 def init(shape):
     """
     Initialize a numpy array of zeroes with the given shape.
@@ -91,39 +89,3 @@ def decrease(area, amount):
 
     dec_func = np.vectorize(lambda x: x - amount)
     return np.apply_along_axis(dec_func, 1, area)
-
-
-def decrease_by_one(area):
-    """
-    Decreases values in an numpy array by 1.
-    Args:
-        area (np.array): area of work
-    Returns:
-        np.array: decreased numpy array by one
-    """
-
-    return decrease(area, 1)
-
-
-def increase_by_one(area):
-    """
-    Increases values in an numpy array by 1.
-    Args:
-        area (np.array): area of work
-    Returns:
-        np.array:
-    """
-
-    return increase(area, 1)
-
-
-def increase_by_two(area):
-    """
-    Increases values in an numpy array by 2.
-    Args:
-        area (np.array): area of work
-    Returns:
-        _type_: _description_
-    """
-
-    return increase(area, 2)

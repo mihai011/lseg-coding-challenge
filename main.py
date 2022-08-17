@@ -85,6 +85,7 @@ def resolve(file_name, part_2=False):
 
 def test_read():
     """_summary_"""
+    
     instructions = read_input("test_input.txt")
     expected_instruction = [
         {"action": TURN_ON, "pos1": (0, 0), "pos2": (999, 999)},
